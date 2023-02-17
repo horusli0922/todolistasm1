@@ -1,0 +1,99 @@
+<html lang="en">
+<!-- feel free to revise this file -->
+
+<head>
+	<style>	
+		/*write your css rules here*/
+			textarea {
+		  width:100%;
+		}
+
+		li {
+			font-size: 30px;
+		}
+
+		
+	</style>
+</head>
+
+<body>
+	<textarea id='user_input' rows="3" >Dinner, 1</textarea> 
+	<br/>
+	<div class='divButton'>
+		<button id='btn_add'>Add</button>
+	  <button onclick="togFunction()">Toggle</button>
+	</div>
+
+	<ol id='order_list'>
+	</ol>	
+</body>
+
+	<script>
+		// write your Javascript here
+    
+ 
+
+document.getElementById("btn_add").onclick = function addFunction() {
+  var node = document.createElement("Li");
+  var inputtext = document.getElementById("user_input").value.split(';')[0];
+  var tnode = document.createTextNode(inputtext);
+  node.appendChild(tnode);
+  
+  if (inputtext.includes("1")){
+   document.getElementById("order_list").appendChild(node)
+   node.style.color = 'black';
+   } else if (inputtext.includes("2")) {
+   document.getElementById("order_list").appendChild(node)
+   node.style.color = 'pink';
+   } else if (inputtext.includes("3")) {
+   document.getElementById("order_list").appendChild(node)
+   node.style.color = 'red';
+   }
+  
+  }
+  
+
+
+// Line through
+oc = document.getElementById('order_list');
+
+oc.onclick = doneFunction;
+function doneFunction () {
+}
+
+oc.addEventListener('click',function(e){
+  if (e.target.style.textDecoration == 'line-through'){
+   e.target.style.textDecoration = '';
+   } else {
+   e.target.style.textDecoration = 'line-through'
+   }
+  
+})
+
+// Delete
+odc = document.getElementById('order_list');
+
+odc.ondblclick = deleteFunction;
+function deleteFunction(f) {
+}
+
+odc.addEventListener('dblclick', (z) => {
+  z.target.remove();
+});
+
+// Toggle hide object
+function togFunction() {
+ var x = document.getElementById("order_list");
+ if(x.style.textDecoration == 'line-through'){
+   x.style.display = 'none';
+ } else {
+  x.style.display = '';
+ }
+}
+
+
+
+
+
+	</script>
+</html>
